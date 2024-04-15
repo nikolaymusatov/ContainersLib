@@ -67,6 +67,6 @@ class Set {
 
 }  // namespace MyNamespace
 
-#include "Set.tpp"
+#include "set.tpp"
 
 #endif  // SRC_SET_SET_H_

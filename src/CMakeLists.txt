@@ -6,26 +6,30 @@ set(CMAKE_CXX_STANDARD 17)
 
 include_directories(.)
 
-set(SRC vector/vector.tpp
+set(SRC main.cpp
+        vector/vector.tpp
         set/set.tpp
         multiset/multiset.tpp
         list/list.tpp
         map/map.tpp
         stack/stack.tpp
         queue/queue.tpp
-#        tests/vector_tests/test_vector.cpp
 )
 
 set(TEST tests/test.cpp
-        tests/test_vector.cpp
-        tests/test_swap.cpp
-        tests/test_queue.cpp
-        tests/test_stack.cpp
-        tests/test_set.cpp
-        tests/test_multiset.cpp
+        tests/test_array.cpp
         tests/test_list.cpp
         tests/test_map.cpp
-        tests/test_array.cpp
+        tests/test_multiset.cpp
+        tests/test_queue.cpp
+        tests/test_set.cpp
+        tests/test_vector.cpp
+        tests/test_stack.cpp
+        
+        
+
+        
+        
 
 )
 

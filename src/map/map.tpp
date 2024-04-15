@@ -1,15 +1,15 @@
 using namespace MyNamespace;
 
 template <class Key, class T>
-Map<Key, T>::Map() : set<std::pair<Key, T>>() {}
+Map<Key, T>::Map() : Set<std::pair<Key, T>>() {}
 
 template <typename Key, typename T>
 Map<Key, T>::Map(std::initializer_list<value_type> const &items)
-    : set<std::pair<Key, T>>(items) {}
+    : Set<std::pair<Key, T>>(items) {}
 
 template <typename Key, typename T>
 Map<Key, T>::Map(const Map &m) : Map() {
-  this->root = set<value_type>::copy_set(m.root, nullptr);
+  this->root = Set<value_type>::copy_set(m.root, nullptr);
   this->nodes_qnt = m.nodes_qnt;
 }
 
@@ -35,7 +35,7 @@ Map<Key, T> &Map<Key, T>::operator=(Map &&m) {
 
 template <typename Key, typename T>
 Map<Key, T>::~Map() {
-  set<value_type>::clear();
+  Set<value_type>::clear();
 }
 
 template <typename Key, typename T>
@@ -61,13 +61,13 @@ std::pair<typename Map<Key, T>::iterator, bool> Map<Key, T>::insert(
   iterator iterator_has_already = find(value.first);
   if (contains(value.first))
     return std::pair<iterator, bool>(iterator_has_already, false);
-  return set<value_type>::insert(value);
+  return Set<value_type>::insert(value);
 }
 
 template <typename Key, typename T>
 std::pair<typename Map<Key, T>::iterator, bool> Map<Key, T>::insert(
     const Key &key, const T &obj) {
-  return set<value_type>::insert(std::make_pair(key, obj));
+  return Set<value_type>::insert(std::make_pair(key, obj));
 }
 
 template <typename Key, typename T>
@@ -78,7 +78,7 @@ std::pair<typename Map<Key, T>::iterator, bool> Map<Key, T>::insert_or_assign(
     iterator_has_already->second = obj;
     return std::pair<iterator, bool>(iterator_has_already, false);
   }
-  return set<value_type>::insert(std::make_pair(key, obj));
+  return Set<value_type>::insert(std::make_pair(key, obj));
 }
 
 template <typename Key, typename T>
@@ -114,8 +114,8 @@ Map<Key, T>::insert_many(Args &&...args) {
 
 template <typename Key, typename T>
 typename Map<Key, T>::iterator Map<Key, T>::find(const Key &key) {
-  iterator i = set<value_type>::begin();
-  while (i != set<value_type>::end()) {
+  iterator i = Set<value_type>::begin();
+  while (i != Set<value_type>::end()) {
     if (i->first == key) return i;
     ++i;
   }
@@ -125,6 +125,6 @@ typename Map<Key, T>::iterator Map<Key, T>::find(const Key &key) {
 template <typename Key, typename T>
 bool Map<Key, T>::contains(const Key &key) {
   bool flag = false;
-  if (find(key) != set<value_type>::end()) flag = true;
+  if (find(key) != Set<value_type>::end()) flag = true;
   return flag;
 }

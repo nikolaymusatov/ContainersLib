@@ -8,7 +8,7 @@
 namespace MyNamespace {
 
 template <typename Key, typename T>
-class Map : public set<std::pair<Key, T>> {
+class Map : public Set<std::pair<Key, T>> {
  public:
   using key_type = Key;
   using mapped_type = T;
