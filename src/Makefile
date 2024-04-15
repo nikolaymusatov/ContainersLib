@@ -1,10 +1,10 @@
 CORES := $(shell nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || echo 1)
 
-all: s21_containers.a
+all: containers.a
 
-s21_containers.a:
+containers.a:
 	mkdir -p "build"
-	cd build && cmake .. && cmake --build . --target s21_containers -- -j$(CORES) && cp s21_containers.a ..
+	cd build && cmake .. && cmake --build . --target containers -- -j$(CORES) && cp containers.a ..
 
 build_test:
 	mkdir -p "build"
@@ -23,11 +23,5 @@ gcov_report: build_test
 open_report:
 	open build/coverage.html
 
-style_test:
-	find . -type f -name 's21*' -o -name 'test_s21*' -exec clang-format -n {} \;
-
-style_format:
-	find . -type f -name 's21*' -o -name 'test_s21*' -exec clang-format -i {} \;
-
 clean:
-	rm -rf build s21_containers.a
+	rm -rf build containers.a

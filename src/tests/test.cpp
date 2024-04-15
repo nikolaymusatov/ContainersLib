@@ -1,4 +1,4 @@
-#include "test_s21_main.h"
+#include "test.h"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

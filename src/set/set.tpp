@@ -1,24 +1,24 @@
 using namespace MyNamespace;
 
 template <typename value_type>
-set<value_type>::set() : root(nullptr), nodes_qnt(0){};
+Set<value_type>::Set() : root(nullptr), nodes_qnt(0){};
 
 template <typename value_type>
-set<value_type>::set(std::initializer_list<value_type> const &items)
-    : set<value_type>() {
+Set<value_type>::Set(std::initializer_list<value_type> const &items)
+    : Set<value_type>() {
   for (size_type i = 0; i < items.size(); i++) {
     this->insert(items.begin()[i]);
   }
 }
 
 template <typename value_type>
-set<value_type>::set(const set<value_type> &s) : set<value_type>() {
+Set<value_type>::Set(const Set<value_type> &s) : Set<value_type>() {
   root = copy_set(s.root, nullptr);
   nodes_qnt = s.nodes_qnt;
 }
 
 template <typename value_type>
-set<value_type>::set(set<value_type> &&s) : set<value_type>() {
+Set<value_type>::Set(Set<value_type> &&s) : Set<value_type>() {
   root = s.root;
   nodes_qnt = s.nodes_qnt;
   s.root = nullptr;
@@ -26,7 +26,7 @@ set<value_type>::set(set<value_type> &&s) : set<value_type>() {
 }
 
 template <typename value_type>
-set<value_type> &set<value_type>::operator=(const set<value_type> &s) {
+Set<value_type> &Set<value_type>::operator=(const Set<value_type> &s) {
   if (root == s.root) return *this;
   this->delete_set(root);
   root = copy_set(s.root, nullptr);
@@ -35,7 +35,7 @@ set<value_type> &set<value_type>::operator=(const set<value_type> &s) {
 }
 
 template <typename value_type>
-set<value_type> &set<value_type>::operator=(set<value_type> &&s) {
+Set<value_type> &Set<value_type>::operator=(Set<value_type> &&s) {
   if (root == s.root) return *this;
   this->delete_set(root);
   root = s.root;
@@ -46,27 +46,27 @@ set<value_type> &set<value_type>::operator=(set<value_type> &&s) {
 }
 
 template <typename value_type>
-set<value_type>::~set() {
+Set<value_type>::~Set() {
   delete_set(root);
 };
 
 template <typename value_type>
-bool set<value_type>::empty() {
+bool Set<value_type>::empty() {
   return !root;
 };
 
 template <typename value_type>
-typename set<value_type>::size_type set<value_type>::size() {
+typename Set<value_type>::size_type Set<value_type>::size() {
   return this->nodes_qnt;
 }
 
 template <typename value_type>
-typename set<value_type>::size_type set<value_type>::max_size() {
+typename Set<value_type>::size_type Set<value_type>::max_size() {
   return std::numeric_limits<size_type>::max() / sizeof(value_type);
 };
 
 template <typename value_type>
-bool set<value_type>::contains(const_reference key) {
+bool Set<value_type>::contains(const_reference key) {
   Node_t<value_type> *node = root;
   while (node && node->value != key) {
     if (node->value > key)
@@ -78,7 +78,7 @@ bool set<value_type>::contains(const_reference key) {
 }
 
 template <typename value_type>
-std::pair<typename set<value_type>::iterator, bool> set<value_type>::insert(
+std::pair<typename Set<value_type>::iterator, bool> Set<value_type>::insert(
     const_reference value) {
   bool status = !contains(value);
   if (status) {
@@ -93,7 +93,7 @@ std::pair<typename set<value_type>::iterator, bool> set<value_type>::insert(
 }
 
 template <typename value_type>
-void set<value_type>::insert_(const_reference key) {
+void Set<value_type>::insert_(const_reference key) {
   Node_t<value_type> *node = new Node_t<value_type>;
   node->value = key;
   node->left = node->right = node->parent = nullptr;
@@ -121,8 +121,8 @@ void set<value_type>::insert_(const_reference key) {
 
 template <typename value_type>
 template <typename... Args>
-std::vector<std::pair<typename set<value_type>::iterator, bool>>
-set<value_type>::insert_many(Args &&...args) {
+std::vector<std::pair<typename Set<value_type>::iterator, bool>>
+Set<value_type>::insert_many(Args &&...args) {
   std::vector<std::pair<iterator, bool>> result;
   for (auto &&arg : {std::forward<Args>(args)...}) {
     result.push_back(insert(arg));
@@ -131,7 +131,7 @@ set<value_type>::insert_many(Args &&...args) {
 }
 
 template <typename value_type>
-void set<value_type>::erase(iterator pos) {
+void Set<value_type>::erase(iterator pos) {
   if (pos.get_node()) {
     Node_t<value_type> *node = pos.get_node();
     if (node->left && node->right) {
@@ -172,7 +172,7 @@ void set<value_type>::erase(iterator pos) {
 }
 
 template <typename value_type>
-void set<value_type>::swap(set &other) {
+void Set<value_type>::swap(Set &other) {
   Node_t<value_type> *tmp = other.root;
   size_type size = other.nodes_qnt;
   other.root = root;
@@ -182,7 +182,7 @@ void set<value_type>::swap(set &other) {
 }
 
 template <typename value_type>
-void set<value_type>::merge(set &other) {
+void Set<value_type>::merge(Set &other) {
   Node_t<value_type> *nodes_to_delete[other.size()];
   int i = 0;
   for (auto iter = other.begin(); iter != other.end(); iter++) {
@@ -197,38 +197,38 @@ void set<value_type>::merge(set &other) {
 }
 
 template <typename value_type>
-typename set<value_type>::iterator set<value_type>::find(const_reference key) {
+typename Set<value_type>::iterator Set<value_type>::find(const_reference key) {
   iterator iter = this->begin();
   while (iter != this->end() && *iter != key) iter++;
   return iter;
 }
 
 template <typename value_type>
-typename set<value_type>::iterator set<value_type>::begin() {
+typename Set<value_type>::iterator Set<value_type>::begin() {
   Node_t<value_type> *tmp = root;
   while (tmp && tmp->left) tmp = tmp->left;
   return iterator(tmp);
 }
 
 template <typename value_type>
-typename set<value_type>::iterator set<value_type>::end() {
+typename Set<value_type>::iterator Set<value_type>::end() {
   return iterator(nullptr);
 }
 
 template <typename value_type>
-typename set<value_type>::const_iterator set<value_type>::cbegin() const {
+typename Set<value_type>::const_iterator Set<value_type>::cbegin() const {
   Node_t<value_type> *tmp = root;
   while (tmp && tmp->left) tmp = tmp->left;
   return const_iterator(tmp);
 }
 
 template <typename value_type>
-typename set<value_type>::const_iterator set<value_type>::cend() const {
+typename Set<value_type>::const_iterator Set<value_type>::cend() const {
   return const_iterator(nullptr);
 }
 
 template <typename value_type>
-void set<value_type>::clear() {
+void Set<value_type>::clear() {
   if (!this->empty()) {
     this->delete_set(this->root);
     this->root = nullptr;
@@ -237,7 +237,7 @@ void set<value_type>::clear() {
 }
 
 template <typename value_type>
-Node_t<value_type> *set<value_type>::copy_set(Node_t<value_type> *node,
+Node_t<value_type> *Set<value_type>::copy_set(Node_t<value_type> *node,
                                               Node_t<value_type> *parent) {
   if (node) {
     Node_t<value_type> *new_node = new Node_t<value_type>;
@@ -252,7 +252,7 @@ Node_t<value_type> *set<value_type>::copy_set(Node_t<value_type> *node,
 }
 
 template <typename value_type>
-void set<value_type>::delete_set(Node_t<value_type> *node) {
+void Set<value_type>::delete_set(Node_t<value_type> *node) {
   if (node) {
     delete_set(node->left);
     delete_set(node->right);

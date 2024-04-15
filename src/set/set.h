@@ -10,7 +10,7 @@
 namespace MyNamespace {
 
 template <typename Key>
-class set {
+class Set {
  public:
   //  Set Member type
   using key_type = Key;
@@ -31,13 +31,13 @@ class set {
 
  public:
   // Set Member functions
-  set();
-  set(std::initializer_list<value_type> const &items);
-  set(const set &);
-  set(set &&s);
-  set &operator=(const set &s);
-  set<Key> &operator=(set &&s);
-  ~set();
+  Set();
+  Set(std::initializer_list<value_type> const &items);
+  Set(const Set &);
+  Set(Set &&s);
+  Set &operator=(const Set &s);
+  Set<Key> &operator=(Set &&s);
+  ~Set();
 
   // Set Capacity
   bool empty();
@@ -57,8 +57,8 @@ class set {
   template <typename... Args>
   std::vector<std::pair<iterator, bool>> insert_many(Args &&...args);
   void erase(iterator pos);
-  void swap(set &other);
-  void merge(set &other);
+  void swap(Set &other);
+  void merge(Set &other);
 
   // Set Lookup
   iterator find(const_reference key);
@@ -67,6 +67,6 @@ class set {
 
 }  // namespace MyNamespace
 
-#include "set.tpp"
+#include "Set.tpp"
 
 #endif  // SRC_SET_SET_H_

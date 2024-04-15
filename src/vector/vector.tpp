@@ -2,7 +2,7 @@ using namespace MyNamespace;
 
 // constructors
 template <typename value_type>
-VECTOR::vector(size_type size) {
+VECTOR::Vector(size_type size) {
   size_type new_capacity = calculate_capacity(size);
   ptr_ = new value_type[new_capacity];
   size_ = size;
@@ -10,7 +10,7 @@ VECTOR::vector(size_type size) {
 }
 
 template <typename value_type>
-VECTOR::vector(std::initializer_list<value_type> const &items) {
+VECTOR::Vector(std::initializer_list<value_type> const &items) {
   size_type new_capacity = calculate_capacity(items.size());
   ptr_ = new value_type[new_capacity];
   size_ = items.size();
@@ -21,7 +21,7 @@ VECTOR::vector(std::initializer_list<value_type> const &items) {
 }
 
 template <typename value_type>
-VECTOR::vector(const vector &v) {
+VECTOR::Vector(const Vector &v) {
   ptr_ = new value_type[v.capacity_];
   size_ = v.size_;
   capacity_ = v.capacity_;
@@ -31,7 +31,7 @@ VECTOR::vector(const vector &v) {
 }
 
 template <typename value_type>
-VECTOR::vector(vector &&v) noexcept {
+VECTOR::Vector(Vector &&v) noexcept {
   ptr_ = v.ptr_;
   size_ = v.size_;
   capacity_ = v.capacity_;
@@ -41,7 +41,7 @@ VECTOR::vector(vector &&v) noexcept {
 }
 
 template <typename value_type>
-VECTOR::~vector() {
+VECTOR::~Vector() {
   delete_vector(*this);
 }
 
@@ -77,18 +77,18 @@ VECTOR::VectorIterator::operator VectorConstIterator() {
 }
 
 template <typename value_type>
-VECTOR::VectorIterator::VectorIterator(vector::pointer const &other) {
+VECTOR::VectorIterator::VectorIterator(Vector::pointer const &other) {
   this->iterator_ptr_ = other;
 }
 
 template <typename value_type>
-VECTOR::VectorConstIterator::VectorConstIterator(vector::pointer const &other) {
+VECTOR::VectorConstIterator::VectorConstIterator(Vector::pointer const &other) {
   this->iterator_ptr_ = other;
 }
 
 template <typename value_type>
 VECTOR::VectorConstIterator::VectorConstIterator(
-    const vector::VectorConstIterator::iterator &other) {
+    const Vector::VectorConstIterator::iterator &other) {
   this->iterator_ptr_ = other.iterator_ptr_;
 }
 
@@ -147,7 +147,7 @@ typename VECTOR::reference VECTOR::at(size_type pos) {
   if (size_ < pos) {
     throw std::out_of_range(
         "Requested element: " + std::to_string(pos) +
-        " is outside the allowed vector size: " + std::to_string(size_));
+        " is outside the allowed Vector size: " + std::to_string(size_));
   }
 
   return ptr_[pos];
@@ -191,7 +191,7 @@ typename VECTOR::size_type VECTOR::capacity() const {
 
 // modifiers functions
 template <typename value_type>
-typename VECTOR::iterator VECTOR::insert(vector::iterator pos,
+typename VECTOR::iterator VECTOR::insert(Vector::iterator pos,
                                          const_reference value) {
   size_type size = calculate_deadzone(this->begin(), pos);
   allocate_volume(size_ + 1, calculate_capacity(size_ + 1), pos);
@@ -200,7 +200,7 @@ typename VECTOR::iterator VECTOR::insert(vector::iterator pos,
 }
 
 template <typename value_type>
-void VECTOR::erase(vector::iterator pos) {
+void VECTOR::erase(Vector::iterator pos) {
   for (int i = std::abs(pos - this->begin()); 1 < size_ && i < size_ - 1; ++i) {
     ptr_[i] = ptr_[i + 1];
   }
@@ -255,8 +255,8 @@ void VECTOR::pop_back() {
 }
 
 template <typename value_type>
-void VECTOR::swap(vector &other) {
-  vector<value_type> tmp_vector(std::move(other));
+void VECTOR::swap(Vector &other) {
+  Vector<value_type> tmp_vector(std::move(other));
   other = std::move(*this);
   *this = std::move(tmp_vector);
 }
@@ -268,7 +268,7 @@ void VECTOR::clear() {
 
 // operators
 template <typename value_type>
-VECTOR &VECTOR::operator=(vector &&v) noexcept {
+VECTOR &VECTOR::operator=(Vector &&v) noexcept {
   delete_vector(*this);
   this->ptr_ = v.ptr_;
   this->size_ = v.size_;
@@ -280,7 +280,7 @@ VECTOR &VECTOR::operator=(vector &&v) noexcept {
 }
 
 template <typename value_type>
-VECTOR &VECTOR::operator=(const vector &v) {
+VECTOR &VECTOR::operator=(const Vector &v) {
   delete_vector(*this);
   ptr_ = new value_type[v.capacity_];
   size_ = v.size_;
@@ -292,13 +292,13 @@ VECTOR &VECTOR::operator=(const vector &v) {
 }
 
 template <typename value_type>
-typename VECTOR::reference VECTOR::operator[](vector::size_type pos) {
+typename VECTOR::reference VECTOR::operator[](Vector::size_type pos) {
   return ptr_[pos];
 }
 
 // internal implementation functions
 template <typename value_type>
-void VECTOR::delete_vector(vector &v) {
+void VECTOR::delete_vector(Vector &v) {
   delete[] v.ptr_;
   v.ptr_ = nullptr;
   v.size_ = 0;
@@ -319,8 +319,8 @@ typename VECTOR::size_type VECTOR::calculate_capacity(
 }
 
 template <typename value_type>
-typename VECTOR::size_type VECTOR::calculate_deadzone(vector::iterator begin,
-                                                      vector::iterator end) {
+typename VECTOR::size_type VECTOR::calculate_deadzone(Vector::iterator begin,
+                                                      Vector::iterator end) {
   int size = 0;
   if (begin != nullptr && end != nullptr) {
     size = end - begin;
@@ -332,8 +332,8 @@ typename VECTOR::size_type VECTOR::calculate_deadzone(vector::iterator begin,
 
 template <typename value_type>
 void VECTOR::switch_pointer(pointer &new_alloc, pointer &old_alloc,
-                            size_type new_size, vector::iterator begin_deadzone,
-                            vector::iterator end_deadzone) {
+                            size_type new_size, Vector::iterator begin_deadzone,
+                            Vector::iterator end_deadzone) {
   if (old_alloc == nullptr) {
     old_alloc = new_alloc;
     new_alloc = nullptr;
@@ -357,14 +357,14 @@ void VECTOR::switch_pointer(pointer &new_alloc, pointer &old_alloc,
 }
 
 template <typename value_type>
-void VECTOR::allocate_volume(vector::size_type new_size,
-                             vector::size_type new_capacity,
-                             vector::iterator begin_deadzone,
-                             vector::iterator end_deadzone) {
+void VECTOR::allocate_volume(Vector::size_type new_size,
+                             Vector::size_type new_capacity,
+                             Vector::iterator begin_deadzone,
+                             Vector::iterator end_deadzone) {
   size_type volume = new_size < new_capacity ? new_capacity : new_size;
   if (max_size() - capacity_ < volume) {
     throw std::length_error(
-        "An invalid vector space reservation value was specified: " +
+        "An invalid Vector space reservation value was specified: " +
         std::to_string(volume));
   }
   auto new_ptr = new value_type[volume];

@@ -8,7 +8,7 @@
 namespace MyNamespace {
 
 template <typename Key, typename T>
-class map : public set<std::pair<Key, T>> {
+class Map : public set<std::pair<Key, T>> {
  public:
   using key_type = Key;
   using mapped_type = T;
@@ -19,13 +19,13 @@ class map : public set<std::pair<Key, T>> {
   using const_iterator = ConstIterator<value_type>;
   using size_type = size_t;
 
-  map();
-  map(std::initializer_list<value_type> const &items);
-  map(const map &m);
-  map(map &&m);
-  map<Key, T> &operator=(const map &m);
-  map<Key, T> &operator=(map &&m);
-  ~map();
+  Map();
+  Map(std::initializer_list<value_type> const &items);
+  Map(const Map &m);
+  Map(Map &&m);
+  Map<Key, T> &operator=(const Map &m);
+  Map<Key, T> &operator=(Map &&m);
+  ~Map();
 
   T &at(const Key &key);
   T &operator[](const Key &key);
@@ -36,8 +36,8 @@ class map : public set<std::pair<Key, T>> {
   template <typename... Args>
   std::vector<std::pair<iterator, bool>> insert_many(Args &&...args);
 
-  void swap(map &other);
-  void merge(map &other);
+  void swap(Map &other);
+  void merge(Map &other);
 
   bool contains(const Key &key);
   iterator find(const Key &key);

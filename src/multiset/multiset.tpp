@@ -1,17 +1,17 @@
 using namespace MyNamespace;
 
 template <typename value_type>
-multiset<value_type>::multiset() : root(nullptr), nodes_qnt(0){};
+Multiset<value_type>::Multiset() : root(nullptr), nodes_qnt(0){};
 
 template <typename value_type>
-multiset<value_type>::multiset(std::initializer_list<value_type> const& items)
-    : multiset<value_type>() {
+Multiset<value_type>::Multiset(std::initializer_list<value_type> const& items)
+    : Multiset<value_type>() {
   for (size_type i = 0; i < items.size(); i++) this->insert(items.begin()[i]);
 }
 
 template <typename value_type>
-multiset<value_type>::multiset(const multiset<value_type>& ms)
-    : multiset<value_type>() {
+Multiset<value_type>::Multiset(const Multiset<value_type>& ms)
+    : Multiset<value_type>() {
   if (this != &ms) {
     clear();
     this->root = copy_multiset(ms.root, nullptr);
@@ -20,50 +20,50 @@ multiset<value_type>::multiset(const multiset<value_type>& ms)
 }
 
 template <typename value_type>
-multiset<value_type>::multiset(multiset<value_type>&& ms)
-    : multiset<value_type>() {
+Multiset<value_type>::Multiset(Multiset<value_type>&& ms)
+    : Multiset<value_type>() {
   swap(ms);
 }
 
 template <typename value_type>
-multiset<value_type>& multiset<value_type>::operator=(
-    const multiset<value_type>& ms) {
+Multiset<value_type>& Multiset<value_type>::operator=(
+    const Multiset<value_type>& ms) {
   if (this != &ms) {
-    multiset<value_type> copy(ms);
+    Multiset<value_type> copy(ms);
     swap(copy);
   }
   return *this;
 }
 
 template <typename value_type>
-multiset<value_type>& multiset<value_type>::operator=(
-    multiset<value_type>&& ms) {
+Multiset<value_type>& Multiset<value_type>::operator=(
+    Multiset<value_type>&& ms) {
   swap(ms);
   return *this;
 }
 
 template <typename value_type>
-multiset<value_type>::~multiset() {
+Multiset<value_type>::~Multiset() {
   delete_multiset(root);
 };
 
 template <typename value_type>
-bool multiset<value_type>::empty() {
+bool Multiset<value_type>::empty() {
   return !root;
 };
 
 template <typename value_type>
-typename multiset<value_type>::size_type multiset<value_type>::size() {
+typename Multiset<value_type>::size_type Multiset<value_type>::size() {
   return this->nodes_qnt;
 }
 
 template <typename value_type>
-typename multiset<value_type>::size_type multiset<value_type>::max_size() {
+typename Multiset<value_type>::size_type Multiset<value_type>::max_size() {
   return std::numeric_limits<size_type>::max() / sizeof(value_type);
 };
 
 template <typename value_type>
-bool multiset<value_type>::contains(const_reference key) {
+bool Multiset<value_type>::contains(const_reference key) {
   Node_t<value_type>* node = root;
   while (node && node->value != key) {
     if (node->value > key)
@@ -75,7 +75,7 @@ bool multiset<value_type>::contains(const_reference key) {
 }
 
 template <typename value_type>
-typename multiset<value_type>::iterator multiset<value_type>::insert(
+typename Multiset<value_type>::iterator Multiset<value_type>::insert(
     const value_type& value) {
   insert_node(root, value);
   ++nodes_qnt;
@@ -83,7 +83,7 @@ typename multiset<value_type>::iterator multiset<value_type>::insert(
 }
 
 template <typename value_type>
-Node_t<value_type>* multiset<value_type>::insert_node(Node_t<value_type>* node,
+Node_t<value_type>* Multiset<value_type>::insert_node(Node_t<value_type>* node,
                                                       const value_type& value) {
   if (node == nullptr) {
     Node_t<value_type>* tmp = new Node_t<value_type>;
@@ -107,7 +107,7 @@ Node_t<value_type>* multiset<value_type>::insert_node(Node_t<value_type>* node,
 }
 
 template <typename value_type>
-void multiset<value_type>::erase(iterator pos) {
+void Multiset<value_type>::erase(iterator pos) {
   if (pos.get_node()) {
     Node_t<value_type>* node = pos.get_node();
     if (node->left && node->right) {
@@ -148,7 +148,7 @@ void multiset<value_type>::erase(iterator pos) {
 }
 
 template <typename value_type>
-void multiset<value_type>::swap(multiset& other) {
+void Multiset<value_type>::swap(Multiset& other) {
   if (this != &other) {
     std::swap(this->root, other.root);
     std::swap(this->nodes_qnt, other.nodes_qnt);
@@ -156,7 +156,7 @@ void multiset<value_type>::swap(multiset& other) {
 }
 
 template <typename value_type>
-void multiset<value_type>::merge(multiset& other) {
+void Multiset<value_type>::merge(Multiset& other) {
   Node_t<value_type>* nodes_to_delete[other.size()];
   int i = 0;
   for (auto iter = other.begin(); iter != other.end(); iter++) {
@@ -169,7 +169,7 @@ void multiset<value_type>::merge(multiset& other) {
 }
 
 template <typename value_type>
-typename multiset<value_type>::size_type multiset<value_type>::count(
+typename Multiset<value_type>::size_type Multiset<value_type>::count(
     const_reference key) {
   size_type count_elements = 0;
   for (auto item : *this) {
@@ -179,7 +179,7 @@ typename multiset<value_type>::size_type multiset<value_type>::count(
 }
 
 template <typename value_type>
-typename multiset<value_type>::iterator multiset<value_type>::lower_bound(
+typename Multiset<value_type>::iterator Multiset<value_type>::lower_bound(
     const_reference key) {
   iterator iterator_not_less = begin();
   while (iterator_not_less != end() && *iterator_not_less < key)
@@ -190,7 +190,7 @@ typename multiset<value_type>::iterator multiset<value_type>::lower_bound(
 }
 
 template <typename value_type>
-typename multiset<value_type>::iterator multiset<value_type>::upper_bound(
+typename Multiset<value_type>::iterator Multiset<value_type>::upper_bound(
     const_reference key) {
   iterator iterator_upper = begin();
   while (iterator_upper != end() && *iterator_upper <= key) ++iterator_upper;
@@ -200,16 +200,16 @@ typename multiset<value_type>::iterator multiset<value_type>::upper_bound(
 }
 
 template <typename value_type>
-std::pair<typename multiset<value_type>::iterator,
-          typename multiset<value_type>::iterator>
-multiset<value_type>::equal_range(const_reference key) {
+std::pair<typename Multiset<value_type>::iterator,
+          typename Multiset<value_type>::iterator>
+Multiset<value_type>::equal_range(const_reference key) {
   return std::pair(lower_bound(key), upper_bound(key));
 }
 
 template <typename value_type>
 template <typename... Args>
-std::vector<std::pair<typename multiset<value_type>::iterator, bool>>
-multiset<value_type>::insert_many(Args&&... args) {
+std::vector<std::pair<typename Multiset<value_type>::iterator, bool>>
+Multiset<value_type>::insert_many(Args&&... args) {
   std::vector<std::pair<iterator, bool>> result;
   for (auto&& arg : {std::forward<Args>(args)...}) {
     result.push_back(std::make_pair(insert(arg), true));
@@ -218,7 +218,7 @@ multiset<value_type>::insert_many(Args&&... args) {
 }
 
 template <typename value_type>
-typename multiset<value_type>::iterator multiset<value_type>::find(
+typename Multiset<value_type>::iterator Multiset<value_type>::find(
     const_reference key) {
   iterator iter = this->begin();
   while (iter != this->end() && *iter != key) iter++;
@@ -226,19 +226,19 @@ typename multiset<value_type>::iterator multiset<value_type>::find(
 }
 
 template <typename value_type>
-typename multiset<value_type>::iterator multiset<value_type>::begin() {
+typename Multiset<value_type>::iterator Multiset<value_type>::begin() {
   Node_t<value_type>* tmp = root;
   while (tmp && tmp->left) tmp = tmp->left;
   return iterator(tmp);
 }
 
 template <typename value_type>
-typename multiset<value_type>::iterator multiset<value_type>::end() {
+typename Multiset<value_type>::iterator Multiset<value_type>::end() {
   return iterator(nullptr);
 }
 
 template <typename value_type>
-void multiset<value_type>::clear() {
+void Multiset<value_type>::clear() {
   if (!this->empty()) {
     this->delete_multiset(this->root);
     this->root = nullptr;
@@ -247,7 +247,7 @@ void multiset<value_type>::clear() {
 }
 
 template <typename value_type>
-Node_t<value_type>* multiset<value_type>::copy_multiset(
+Node_t<value_type>* Multiset<value_type>::copy_multiset(
     Node_t<value_type>* node, Node_t<value_type>* parent) {
   if (node) {
     Node_t<value_type>* new_node = new Node_t<value_type>;
@@ -262,7 +262,7 @@ Node_t<value_type>* multiset<value_type>::copy_multiset(
 }
 
 template <typename value_type>
-void multiset<value_type>::delete_multiset(Node_t<value_type>* node) {
+void Multiset<value_type>::delete_multiset(Node_t<value_type>* node) {
   if (node) {
     delete_multiset(node->left);
     delete_multiset(node->right);

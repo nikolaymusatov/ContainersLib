@@ -10,7 +10,7 @@
 namespace MyNamespace {
 
 template <typename T>
-class queue {
+class Queue {
  private:
   Node<T>* head;
   Node<T>* tail;
@@ -23,13 +23,13 @@ class queue {
 
  public:
   // Queue Member functions
-  queue();
-  queue(std::initializer_list<value_type> const& items);
-  queue(const queue& q);
-  queue(queue&& q);
-  ~queue();
-  queue& operator=(const queue& q);
-  queue& operator=(queue&& q);
+  Queue();
+  Queue(std::initializer_list<value_type> const& items);
+  Queue(const Queue& q);
+  Queue(Queue&& q);
+  ~Queue();
+  Queue& operator=(const Queue& q);
+  Queue& operator=(Queue&& q);
 
   // Queue Element access
   const_reference front();
@@ -42,11 +42,11 @@ class queue {
   // Queue Modifiers
   void push(const_reference value);
   void pop();
-  void swap(queue& other);
+  void swap(Queue& other);
 
   // utils
   void erase();
-  void copy(const queue& s);
+  void copy(const Queue& s);
 };
 
 }  // namespace MyNamespace

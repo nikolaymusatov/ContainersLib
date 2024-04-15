@@ -2,12 +2,12 @@ using namespace MyNamespace;
 
 // Stack Member functions
 template <typename value_type>
-stack<value_type>::stack() {
+Stack<value_type>::Stack() {
   top_node = nullptr;
 }
 
 template <typename value_type>
-stack<value_type>::stack(std::initializer_list<value_type> const& items) {
+Stack<value_type>::Stack(std::initializer_list<value_type> const& items) {
   top_node = nullptr;
   for (size_type i = 0; i < items.size(); i++) {
     this->push(items.begin()[i]);
@@ -15,19 +15,19 @@ stack<value_type>::stack(std::initializer_list<value_type> const& items) {
 }
 
 template <typename value_type>
-stack<value_type>::stack(const stack& s) {
+Stack<value_type>::Stack(const Stack& s) {
   top_node = nullptr;
   this->copy(s);
 }
 
 template <typename value_type>
-stack<value_type>::stack(stack&& s) {
+Stack<value_type>::Stack(Stack&& s) {
   top_node = s.top_node;
   s.top_node = nullptr;
 }
 
 template <typename value_type>
-stack<value_type>& stack<value_type>::operator=(const stack& s) {
+Stack<value_type>& Stack<value_type>::operator=(const Stack& s) {
   if (top_node == s.top_node) return *this;
   this->erase();
   this->copy(s);
@@ -35,7 +35,7 @@ stack<value_type>& stack<value_type>::operator=(const stack& s) {
 }
 
 template <typename value_type>
-stack<value_type>& stack<value_type>::operator=(stack&& s) {
+Stack<value_type>& Stack<value_type>::operator=(Stack&& s) {
   if (top_node == s.top_node) return *this;
   this->erase();
   top_node = s.top_node;
@@ -44,24 +44,24 @@ stack<value_type>& stack<value_type>::operator=(stack&& s) {
 }
 
 template <typename value_type>
-stack<value_type>::~stack() {
+Stack<value_type>::~Stack() {
   this->erase();
 }
 
 // Stack Element access
 template <typename value_type>
-typename stack<value_type>::const_reference stack<value_type>::top() {
+typename Stack<value_type>::const_reference Stack<value_type>::top() {
   return top_node->value;
 }
 
 // Stack Capacity
 template <typename value_type>
-bool stack<value_type>::empty() {
+bool Stack<value_type>::empty() {
   return top_node == nullptr;
 }
 
 template <typename value_type>
-typename stack<value_type>::size_type stack<value_type>::size() {
+typename Stack<value_type>::size_type Stack<value_type>::size() {
   Node<value_type>* tmp = top_node;
   size_type counter = 0;
   while (tmp != nullptr) {
@@ -73,7 +73,7 @@ typename stack<value_type>::size_type stack<value_type>::size() {
 
 // Stack Modifiers
 template <typename value_type>
-void stack<value_type>::push(const_reference value) {
+void Stack<value_type>::push(const_reference value) {
   Node<value_type>* tmp = new Node<value_type>;
   if (tmp) {
     tmp->value = value;
@@ -83,7 +83,7 @@ void stack<value_type>::push(const_reference value) {
 }
 
 template <typename value_type>
-void stack<value_type>::pop() {
+void Stack<value_type>::pop() {
   Node<value_type>* popped = top_node;
   if (popped) {
     top_node = top_node->next;
@@ -93,7 +93,7 @@ void stack<value_type>::pop() {
 }
 
 template <typename value_type>
-void stack<value_type>::swap(stack& other) {
+void Stack<value_type>::swap(Stack& other) {
   Node<value_type>* tmp = other.top_node;
   other.top_node = top_node;
   top_node = tmp;
@@ -101,7 +101,7 @@ void stack<value_type>::swap(stack& other) {
 
 // utils
 template <typename value_type>
-void stack<value_type>::erase() {
+void Stack<value_type>::erase() {
   Node<value_type>* tmp;
   while (top_node != nullptr) {
     tmp = top_node;
@@ -112,7 +112,7 @@ void stack<value_type>::erase() {
 }
 
 template <typename value_type>
-void stack<value_type>::copy(const stack& s) {
+void Stack<value_type>::copy(const Stack& s) {
   Node<value_type>* tmp = s.top_node;
   while (tmp) {
     this->push(tmp->value);

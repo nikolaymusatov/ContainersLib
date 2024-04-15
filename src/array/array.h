@@ -6,7 +6,7 @@
 namespace MyNamespace {
 
 template <typename T, std::size_t N>
-struct array {
+struct Array {
   T arr[N];
 
   // Array Member type
@@ -51,7 +51,7 @@ struct array {
   size_type max_size() { return N; };
 
   // Array Modifiers
-  void swap(array &other) { std::swap(this->arr, other.arr); }
+  void swap(Array &other) { std::swap(this->arr, other.arr); }
 
   void fill(const_reference value) {
     for (size_type i = 0; i < N; i++) arr[i] = value;

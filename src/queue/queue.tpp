@@ -2,12 +2,12 @@ using namespace MyNamespace;
 
 // Queue Member functions
 template <typename value_type>
-queue<value_type>::queue() {
+Queue<value_type>::Queue() {
   head = tail = nullptr;
 }
 
 template <typename value_type>
-queue<value_type>::queue(std::initializer_list<value_type> const& items) {
+Queue<value_type>::Queue(std::initializer_list<value_type> const& items) {
   head = tail = nullptr;
   for (size_type i = 0; i < items.size(); i++) {
     this->push(items.begin()[i]);
@@ -15,25 +15,25 @@ queue<value_type>::queue(std::initializer_list<value_type> const& items) {
 }
 
 template <typename value_type>
-queue<value_type>::queue(const queue& q) {
+Queue<value_type>::Queue(const Queue& q) {
   head = tail = nullptr;
   this->copy(q);
 }
 
 template <typename value_type>
-queue<value_type>::queue(queue&& q) {
+Queue<value_type>::Queue(Queue&& q) {
   tail = q.tail;
   head = q.head;
   q.tail = q.head = nullptr;
 }
 
 template <typename value_type>
-queue<value_type>::~queue() {
+Queue<value_type>::~Queue() {
   this->erase();
 }
 
 template <typename value_type>
-queue<value_type>& queue<value_type>::operator=(const queue& q) {
+Queue<value_type>& Queue<value_type>::operator=(const Queue& q) {
   if (head == q.head) return *this;
   this->erase();
   this->copy(q);
@@ -41,7 +41,7 @@ queue<value_type>& queue<value_type>::operator=(const queue& q) {
 }
 
 template <typename value_type>
-queue<value_type>& queue<value_type>::operator=(queue&& q) {
+Queue<value_type>& Queue<value_type>::operator=(Queue&& q) {
   if (head == q.head) return *this;
   this->erase();
   tail = q.tail;
@@ -52,18 +52,18 @@ queue<value_type>& queue<value_type>::operator=(queue&& q) {
 
 // Queue Element access
 template <typename value_type>
-typename queue<value_type>::const_reference queue<value_type>::front() {
+typename Queue<value_type>::const_reference Queue<value_type>::front() {
   return head->value;
 }
 
 template <typename value_type>
-typename queue<value_type>::const_reference queue<value_type>::back() {
+typename Queue<value_type>::const_reference Queue<value_type>::back() {
   return tail->value;
 }
 
 // Queue Capacity
 template <typename value_type>
-typename queue<value_type>::size_type queue<value_type>::size() {
+typename Queue<value_type>::size_type Queue<value_type>::size() {
   Node<value_type>* tmp = head;
   size_type counter = 0;
   while (tmp != nullptr) {
@@ -74,13 +74,13 @@ typename queue<value_type>::size_type queue<value_type>::size() {
 }
 
 template <typename value_type>
-bool queue<value_type>::empty() {
+bool Queue<value_type>::empty() {
   return head == nullptr;
 }
 
 // // Queue Modifiers
 template <typename value_type>
-void queue<value_type>::push(const_reference value) {
+void Queue<value_type>::push(const_reference value) {
   Node<value_type>* tmp = new Node<value_type>;
   tmp->value = value;
   tmp->next = nullptr;
@@ -91,7 +91,7 @@ void queue<value_type>::push(const_reference value) {
 }
 
 template <typename value_type>
-void queue<value_type>::pop() {
+void Queue<value_type>::pop() {
   Node<value_type>* popped = head;
   if (popped) {
     head = head->next;
@@ -101,7 +101,7 @@ void queue<value_type>::pop() {
 }
 
 template <typename value_type>
-void queue<value_type>::swap(queue& other) {
+void Queue<value_type>::swap(Queue& other) {
   Node<value_type>* tmp = other.head;
   other.head = head;
   head = tmp;
@@ -112,7 +112,7 @@ void queue<value_type>::swap(queue& other) {
 
 // // utils
 template <typename value_type>
-void queue<value_type>::erase() {
+void Queue<value_type>::erase() {
   Node<value_type>* tmp;
   while (head != nullptr) {
     tmp = head;
@@ -123,7 +123,7 @@ void queue<value_type>::erase() {
 }
 
 template <typename value_type>
-void queue<value_type>::copy(const queue& q) {
+void Queue<value_type>::copy(const Queue& q) {
   tail = q.tail;
   Node<value_type>* tmp = q.head;
   while (tmp) {

@@ -1,7 +1,7 @@
 #ifndef SRC_VECTOR_VECTOR_H
 #define SRC_VECTOR_VECTOR_H
 
-#define VECTOR vector<value_type>
+#define VECTOR Vector<value_type>
 #define BASE_ITERATOR BaseIterator<iterator_type, reference_type>
 
 #include <limits>
@@ -10,7 +10,7 @@
 namespace MyNamespace {
 
 template <typename value_type>
-class vector {
+class Vector {
  public:
   using size_type = std::size_t;
   using pointer = value_type *;
@@ -73,16 +73,16 @@ class vector {
   const_iterator end() const;
 
   // constructors
-  explicit vector() = default;
-  explicit vector(size_type size);
-  vector(std::initializer_list<value_type> const &items);
-  vector(const vector &v);
-  vector(vector &&v) noexcept;
-  ~vector();
+  explicit Vector() = default;
+  explicit Vector(size_type size);
+  Vector(std::initializer_list<value_type> const &items);
+  Vector(const Vector &v);
+  Vector(Vector &&v) noexcept;
+  ~Vector();
 
   // operators
-  vector &operator=(vector &&v) noexcept;
-  vector &operator=(const vector &v);
+  Vector &operator=(Vector &&v) noexcept;
+  Vector &operator=(const Vector &v);
   reference operator[](size_type pos);
 
   // access elements function
@@ -104,7 +104,7 @@ class vector {
   void push_back(value_type &&value);
   void shrink_to_fit();
   void reserve(size_type size);
-  void swap(vector &other);
+  void swap(Vector &other);
   void erase(iterator pos);
   void pop_back();
   void clear();
@@ -117,11 +117,11 @@ class vector {
                        iterator end_deadzone = nullptr);
   void switch_pointer(pointer &new_alloc, pointer &old_alloc,
                       size_type new_size,
-                      vector::iterator begin_deadzone = nullptr,
-                      vector::iterator end_deadzone = nullptr);
-  size_type calculate_deadzone(vector::iterator begin,
-                               vector::iterator end = nullptr);
-  void delete_vector(vector &v);
+                      Vector::iterator begin_deadzone = nullptr,
+                      Vector::iterator end_deadzone = nullptr);
+  size_type calculate_deadzone(Vector::iterator begin,
+                               Vector::iterator end = nullptr);
+  void delete_vector(Vector &v);
 };
 
 }  // namespace MyNamespace

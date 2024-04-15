@@ -10,7 +10,7 @@
 namespace MyNamespace {
 
 template <typename T>
-class stack {
+class Stack {
  private:
   Node<T>* top_node;
 
@@ -22,13 +22,13 @@ class stack {
 
  public:
   // Stack Member functions
-  stack();
-  stack(std::initializer_list<value_type> const& items);
-  stack(const stack& s);
-  stack(stack&& s);
-  ~stack();
-  stack& operator=(const stack& s);
-  stack& operator=(stack&& s);
+  Stack();
+  Stack(std::initializer_list<value_type> const& items);
+  Stack(const Stack& s);
+  Stack(Stack&& s);
+  ~Stack();
+  Stack& operator=(const Stack& s);
+  Stack& operator=(Stack&& s);
 
   // Stack Element access
   const_reference top();
@@ -40,11 +40,11 @@ class stack {
   // Stack Modifiers
   void push(const_reference value);
   void pop();
-  void swap(stack& other);
+  void swap(Stack& other);
 
   // utils
   void erase();
-  void copy(const stack& s);
+  void copy(const Stack& s);
 };
 
 }  // namespace MyNamespace

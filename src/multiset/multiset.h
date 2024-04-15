@@ -11,7 +11,7 @@
 namespace MyNamespace {
 
 template <typename Key>
-class multiset {
+class Multiset {
  public:
   Node_t<Key>* root;
   size_t nodes_qnt;
@@ -20,7 +20,7 @@ class multiset {
   Node_t<Key>* copy_multiset(Node_t<Key>* node, Node_t<Key>* parent);
 
  public:
-  //  multiset Member type
+  //  Multiset Member type
   using key_type = Key;
   using value_type = Key;
   using reference = value_type&;
@@ -29,32 +29,32 @@ class multiset {
   using iterator = Iterator<value_type>;
   using const_iterator = ConstIterator<value_type>;
 
-  // multiset Member functions
-  multiset();
-  multiset(std::initializer_list<value_type> const& items);
-  multiset(const multiset&);
-  multiset(multiset&& ms);
-  multiset& operator=(const multiset& ms);
-  multiset<Key>& operator=(multiset&& ms);
-  ~multiset();
+  // Multiset Member functions
+  Multiset();
+  Multiset(std::initializer_list<value_type> const& items);
+  Multiset(const Multiset&);
+  Multiset(Multiset&& ms);
+  Multiset& operator=(const Multiset& ms);
+  Multiset<Key>& operator=(Multiset&& ms);
+  ~Multiset();
 
-  // multiset Capacity
+  // Multiset Capacity
   bool empty();
   size_type size();
   size_type max_size();
 
-  // multiset Iterators
+  // Multiset Iterators
   iterator begin();
   iterator end();
 
-  // multiset Modifiers
+  // Multiset Modifiers
   void clear();
   iterator insert(const value_type& value);
   Node_t<value_type>* insert_node(Node_t<value_type>* node,
                                   const value_type& value);
   void erase(iterator pos);
-  void swap(multiset& other);
-  void merge(multiset& other);
+  void swap(Multiset& other);
+  void merge(Multiset& other);
 
   size_type count(const_reference key);
   std::pair<iterator, iterator> equal_range(const_reference key);
@@ -64,7 +64,7 @@ class multiset {
   template <typename... Args>
   std::vector<std::pair<iterator, bool>> insert_many(Args&&... args);
 
-  // multiset Lookup
+  // Multiset Lookup
   iterator find(const_reference key);
   bool contains(const_reference key);
 };
