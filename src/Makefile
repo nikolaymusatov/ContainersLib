@@ -19,8 +19,6 @@ test_leaks:
 
 gcov_report: build_test
 	cd build && make coverage_report
-
-open_report:
 	open build/coverage.html
 
 clean:
