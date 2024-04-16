@@ -97,10 +97,8 @@ This table contains in-class type overrides (typical for the standard STL librar
 | `value_type`           | `std::pair<const key_type,mapped_type>` Key-value pair                                 |
 | `reference`            | `value_type &` defines the type of the reference to an element                         |
 | `const_reference`      | `const value_type &` defines the type of the constant reference                        |
-| `iterator`             | class `MapIterator<K, T>` as internal iterator of tree subclass; defines the type
-for iterating through the container                                                                               |
-| `const_iterator`       | class `MapConstIterator<K, T>` as internal const iterator of tree subclass;
-defines the constant type for iterating through the container                                                     |
+| `iterator`             | class `MapIterator<K, T>` as internal iterator of tree subclass; defines the type for iterating through the container                                                                                                         |
+| `const_iterator`       | class `MapConstIterator<K, T>` as internal const iterator of tree subclass; defines the constant type for iterating through the container                                                                                                     |
 | `size_type`            | `size_t` defines the type of the container size (standard type is size_t)              |
 
 *Map Member functions*
@@ -110,8 +108,7 @@ This table contains the main public methods for interacting with the class:
 | Member functions      | Definition                                                                              |
 |-----------------------|-----------------------------------------------------------------------------------------|
 | `Map()`               | default constructor, creates an empty map                                               |
-| `Map(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the map
-initizialized using std::initializer_list<T>                                                                      |
+| `Map(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the map initizialized using std::initializer_list<T>                                                                                          |
 | `Map(const Map &m)`   | copy constructor                                                                        |
 | `Map(Map &&m)`        | move constructor                                                                        |
 | `~Map()`              | destructor                                                                              |
@@ -153,12 +150,9 @@ This table contains the public methods for modifying a container:
 | Modifiers              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`         | clears the contents                                                                    |
-| `std::pair<iterator, bool> insert(const value_type& value)`| inserts a node and returns an iterator to where
-the element is in the container and bool denoting whether the insertion took place                                |
-| `std::pair<iterator, bool> insert(const Key& key, const T& obj)`| inserts a value by key and returns an iterator
-to where the element is in the container and bool denoting whether the insertion took place                       |
-| `std::pair<iterator, bool> insert_or_assign(const Key& key, const T& obj)`| inserts an element or assigns
-to the current element if the key already exists                                                                  |
+| `std::pair<iterator, bool> insert(const value_type& value)`| inserts a node and returns an iterator to where the element is in the container and bool denoting whether the insertion took place                                                                         |
+| `std::pair<iterator, bool> insert(const Key& key, const T& obj)`| inserts a value by key and returns an iterator to where the element is in the container and bool denoting whether the insertion took place                                                      |
+| `std::pair<iterator, bool> insert_or_assign(const Key& key, const T& obj)`| inserts an element or assigns to the current element if the key already exists                                                                                                            |
 | `void erase(iterator pos)`| erases an element at pos                                                            |
 | `void swap(Map& other)`   | swaps the contents                                                                  |
 | `void merge(Map& other)`  | splices nodes from another container                                                |
@@ -191,8 +185,7 @@ This table contains the main public methods for interacting with the class:
 | Functions              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `Queue()`              | default constructor, creates an empty queue                                            |
-| `Queue(std::initializer_list<value_type> const &items)`  | initializer list constructor,
-creates queue initizialized using std::initializer_list<T>                                                        |
+| `Queue(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates queue initizialized using std::initializer_list<T>                                                                                          |
 | `Queue(const Queue &q)`| copy constructor                                                                       |
 | `Queue(Queue &&q)`     | move constructor                                                                       |
 | `~Queue()`             | destructor                                                                             |
@@ -247,8 +240,7 @@ This table contains the main public methods for interacting with the class:
 | Functions         | Definition                                                                |
 |-------------------|---------------------------------------------------------------------------|
 | `Stack()`         | default constructor, creates an empty stack                               |
-| `Stack(std::initializer_list<value_type> const &items)` | initializer list constructor,
-creates stack initizialized using std::initializer_list<T>                                      |
+| `Stack(std::initializer_list<value_type> const &items)` | initializer list constructor, creates stack initizialized using std::initializer_list<T>                                                                        |
 | `Stack(const Stack &s)` | copy constructor                                                    |
 | `Stack(Stack &&s)`| move constructor                                                          |
 | `~Stack()`        | destructor                                                                |
@@ -295,10 +287,8 @@ This table contains in-class type overrides (typical for the standard STL librar
 | `value_type`             | `Key` value type (the value itself is a key)                                           |
 | `reference`              | `value_type &` defines the type of the reference to an element                         |
 | `const_reference`        | `const value_type &` defines the type of the constant reference                        |
-| `iterator`               | class `SetIterator<T>` as the internal iterator
-of tree subclass; defines the type for iterating through the container                                              |
-| `const_iterator`         | class `SetConstIterator<T>` as the internal const iterator of tree subclass;
-defines the constant type for iterating through the container                                                       |
+| `iterator`               | class `SetIterator<T>` as the internal iterator of tree subclass; defines the type for iterating through the container                                                                                                           |
+| `const_iterator`         | class `SetConstIterator<T>` as the internal const iterator of tree subclass; defines the constant type for iterating through the container                                                                                               |
 | `size_type`              | `size_t` defines the type of the container size (standard type is size_t)              |
 
 *Set Member functions*
@@ -308,8 +298,7 @@ This table contains the main public methods for interacting with the class:
 | Member functions      | Definition                                                                                |
 |-----------------------|-------------------------------------------------------------------------------------------|
 | `Set()`               | default constructor, creates an empty set                                                 |
-| `Set(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the set
-initizialized using std::initializer_list<T>                                                                        |
+| `Set(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the set initizialized using std::initializer_list<T>                                                                                            |
 | `Set(const Set &s)`   | copy constructor                                                                          |
 | `Set(Set &&s)`        | move constructor                                                                          |
 | `~Set()`              | destructor                                                                                |
@@ -342,8 +331,7 @@ This table contains the public methods for modifying a container:
 | Modifiers              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`         | clears the contents                                                                    |
-| `std::pair<iterator, bool> insert(const value_type& value)` | inserts a node and returns an iterator to where
-the element is in the container and bool denoting whether the insertion took place                                |
+| `std::pair<iterator, bool> insert(const value_type& value)` | inserts a node and returns an iterator to where the element is in the container and bool denoting whether the insertion took place                                                                    |
 | `void erase(iterator pos)` | erases an element at pos                                                           |
 | `void swap(Set& other)`    | swaps the contents                                                                 |
 | `void merge(Set& other);`  | splices nodes from another container                                               |
@@ -368,10 +356,8 @@ This table contains in-class type overrides (typical for the standard STL librar
 | `value_type`             | `Key` value type (the value itself is a key)                                           |
 | `reference`              | `value_type &` defines the type of the reference to an element                         |
 | `const_reference`        | `const value_type &` defines the type of the constant reference                        |
-| `iterator`               | class `MultisetIterator<T>` as internal iterator of tree subclass;
-defines the type for iterating through the container                                                                |
-| `const_iterator`         | class `MultisetConstIterator<T>` as internal const iterator of tree subclass;
-defines the constant type for iterating through the container                                                       |
+| `iterator`               | class `MultisetIterator<T>` as internal iterator of tree subclass; defines the type for iterating through the container                                                                                                           |
+| `const_iterator`         | class `MultisetConstIterator<T>` as internal const iterator of tree subclass; defines the constant type for iterating through the container                                                                                               |
 | `size_type`              | `size_t` defines the type of the container size (standard type is size_t)              |
 
 *Multiset Member functions*
@@ -381,8 +367,7 @@ This table contains the main public methods for interacting with the class:
 | Member functions         | Definition                                                                             |
 |--------------------------|----------------------------------------------------------------------------------------|
 | `Multiset()`             | default constructor, creates an empty set                                              |
-| `Multiset(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the set
-initizialized using std::initializer_list<T>                                                                        |
+| `Multiset(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the set initizialized using std::initializer_list<T>                                                                                            |
 | `Multiset(const Multiset &ms)`  | copy constructor                                                                |
 | `Multiset(Multiset &&ms)`  | move constructor                                                                     |
 | `~Multiset()`            | destructor                                                                             |
@@ -445,8 +430,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 | `reference`            | `T &` defines the type of the reference to an element                                  |
 | `const_reference`      | `const T &` defines the type of the constant reference                                 |
 | `iterator`             | internal class `VectorIterator<T>` defines the type for iterating through the container|
-| `const_iterator`       | internal class `VectorConstIterator<T>` defines the constant type
-for iterating through the container                                                                               |
+| `const_iterator`       | internal class `VectorConstIterator<T>` defines the constant type for iterating through the container                                                                                                         |
 | `size_type`            | `size_t` defines the type of the container size (standard type is size_t)              |
 
 *Vector Member functions*
@@ -457,8 +441,7 @@ This table contains the main public methods for interacting with the class:
 |------------------------|----------------------------------------------------------------------------------------|
 | `Vector()`             | default constructor, creates an empty vector                                           |
 | `Vector(size_type n)`  | parameterized constructor, creates the vector of size n                                |
-| `Vector(std::initializer_list<value_type> const &items)`  | initializer list constructor,
-creates a vector initizialized using std::initializer_list<T>                                                     |
+| `Vector(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates a vector initizialized using std::initializer_list<T>                                                                                          |
 | `Vector(const Vector &v)`  | copy constructor                                                                   |
 | `Vector(Vector &&v)`  | move constructor                                                                        |
 | `~Vector()`           | destructor                                                                              |
@@ -495,8 +478,7 @@ This table contains the public methods for accessing the container capacity info
 | `bool empty()`         | checks whether the container is empty                                                  |
 | `size_type size()`     | returns the number of elements                                                         |
 | `size_type max_size()` | returns the maximum possible number of elements                                        |
-| `void reserve(size_type size)` | allocate storage of size elements and copies current array elements
-to a newely allocated array                                                                                       |
+| `void reserve(size_type size)` | allocate storage of size elements and copies current array elements to a newely allocated array                                                                                                             |
 | `size_type capacity()` | returns the number of elements that can be held in currently allocated storage         |
 | `void shrink_to_fit()` | reduces memory usage by freeing unused memory                                          |
 
@@ -508,8 +490,7 @@ This table contains the public methods for modifying a container:
 | Modifiers              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`         | clears the contents                                                                    |
-| `iterator insert(iterator pos, const_reference value)` | inserts elements into concrete pos and returns
-the iterator that points to the new element                                                                       |
+| `iterator insert(iterator pos, const_reference value)` | inserts elements into concrete pos and returns the iterator that points to the new element                                                                                                           |
 | `void erase(iterator pos)` | erases an element at pos                                                           |
 | `void push_back(const_reference value)` | adds an element to the end                                            |
 | `void pop_back()` | removes the last element                                                                    |
@@ -537,8 +518,7 @@ This table contains the main public methods for interacting with the class:
 | Functions              | Definition                                                                             |
 |------------------------|----------------------------------------------------------------------------------------|
 | `Array()`              | default constructor, creates an empty array                                            |
-| `Array(std::initializer_list<value_type> const &items)`  | initializer list constructor,
-creates array initizialized using std::initializer_list<T>                                                        |
+| `Array(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates array initizialized using std::initializer_list<T>                                                                                          |
 | `Array(const Array &a)`| copy constructor                                                                       |
 | `Array(Array &&a)`     | move constructor                                                                       |
 | `~Array()`             | destructor                                                                             |
