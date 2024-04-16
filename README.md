@@ -27,7 +27,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 This table contains the main public methods for interacting with the class:
 
 | Functions      | Definition                                                                                                  |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|----------------|-------------------------------------------------------------------------------------------------------------|
 | `List()`       | default constructor, creates an empty list                                                                  |
 | `List(size_type n)`  | parameterized constructor, creates the list of size n                                                 |
 | `List(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates a list initizialized using std::initializer_list<T>                                                                                                       |
@@ -42,7 +42,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for accessing the elements of the class:
 
 | Element access            | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|---------------------------|-------------------------------------------------|
 | `const_reference front()` | access the first element                        |
 | `const_reference back()`  | access the last element                         |
 
@@ -51,7 +51,7 @@ This table contains the public methods for accessing the elements of the class:
 This table contains the public methods for iterating over class elements (access to iterators):
 
 | Iterators                | Definition                                       |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|--------------------------|--------------------------------------------------|
 | `iterator begin()`       | returns an iterator to the beginning             |
 | `iterator end()`         | returns an iterator to the end                   |
 
@@ -60,7 +60,7 @@ This table contains the public methods for iterating over class elements (access
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity                 | Definition                                       |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|--------------------------|--------------------------------------------------|
 | `bool empty()`           | checks whether the container is empty            |
 | `size_type size()`       | returns the number of elements                   |
 | `size_type max_size()`   | returns the maximum possible number of elements  |
@@ -70,7 +70,7 @@ This table contains the public methods for accessing the container capacity info
 This table contains the public methods for modifying a container:
 
 | Modifiers      | Definition                                                                                                                         |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|----------------|------------------------------------------------------------------------------------------------------------------------------------|
 | `void clear()`          | clears the contents                                                                                                       |
 | `iterator insert(iterator pos, const_reference value)` | inserts element into concrete pos and returns the iterator that points to the new element  |
 | `void erase(iterator pos)`          | erases an element at pos                                                                                      |
@@ -91,7 +91,7 @@ This table contains the public methods for modifying a container:
 This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
 
 | Member type            | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `key_type`             | `Key` the first template parameter (Key)                                               |
 | `mapped_type`          | `T` the second template parameter (T)                                                  |
 | `value_type`           | `std::pair<const key_type,mapped_type>` Key-value pair                                 |
@@ -106,7 +106,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 This table contains the main public methods for interacting with the class:
 
 | Member functions      | Definition                                                                              |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-----------------------|-----------------------------------------------------------------------------------------|
 | `Map()`               | default constructor, creates an empty map                                               |
 | `Map(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the map initizialized using std::initializer_list<T>                                                                                          |
 | `Map(const Map &m)`   | copy constructor                                                                        |
@@ -120,7 +120,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for accessing the elements of the class:
 
 | Element access                  | Definition                                                                    |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|---------------------------------|-------------------------------------------------------------------------------|
 | `T& at(const Key& key)`         | access a specified element with bounds checking                               |
 | `T& operator[](const Key& key)` | access or insert specified element                                            |
 
@@ -129,7 +129,7 @@ This table contains the public methods for accessing the elements of the class:
 This table contains the public methods for iterating over class elements (access to iterators):
 
 | Iterators              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `iterator begin()`     | returns an iterator to the beginning                                                   |
 | `iterator end()`       | returns an iterator to the end                                                         |
 
@@ -138,7 +138,7 @@ This table contains the public methods for iterating over class elements (access
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity               | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `bool empty()`         | checks whether the container is empty                                                  |
 | `size_type size()`     | returns the number of elements                                                         |
 | `size_type max_size()` | returns the maximum possible number of elements                                        |
@@ -148,7 +148,7 @@ This table contains the public methods for accessing the container capacity info
 This table contains the public methods for modifying a container:
 
 | Modifiers              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`         | clears the contents                                                                    |
 | `std::pair<iterator, bool> insert(const value_type& value)`| inserts a node and returns an iterator to where the element is in the container and bool denoting whether the insertion took place                                                                         |
 | `std::pair<iterator, bool> insert(const Key& key, const T& obj)`| inserts a value by key and returns an iterator to where the element is in the container and bool denoting whether the insertion took place                                                      |
@@ -162,7 +162,7 @@ This table contains the public methods for modifying a container:
 This table contains the public methods for viewing the container:
 
 | Lookup                 | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `bool contains(const Key& key)`| checks if there is an element with key equivalent to key in the container      |
 
 ### Queue
@@ -171,7 +171,7 @@ This table contains the public methods for viewing the container:
 This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
 
 | Member type            | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `value_type`           | `T` the template parameter T                                                           |
 | `reference`            | `T &` defines the type of the reference to an element                                  |
 | `const_reference`      | `const T &` defines the type of the constant reference                                 |
@@ -183,7 +183,7 @@ This table contains the main public methods for interacting with the class:
 
 
 | Functions              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `Queue()`              | default constructor, creates an empty queue                                            |
 | `Queue(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates queue initizialized using std::initializer_list<T>                                                                                          |
 | `Queue(const Queue &q)`| copy constructor                                                                       |
@@ -197,7 +197,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for accessing the elements of the class:
 
 | Element access                     | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------------------|-------------------------------------------------|
 | `const_reference front()`          | access the first element                        |
 | `const_reference back()`           | access the last element                         |
 
@@ -206,7 +206,7 @@ This table contains the public methods for accessing the elements of the class:
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity                | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-------------------------|-------------------------------------------------|
 | `bool empty()`          | checks whether the container is empty           |
 | `size_type size()`      | returns the number of elements                  |
 
@@ -215,7 +215,7 @@ This table contains the public methods for accessing the container capacity info
 This table contains the public methods for modifying a container:
 
 | Modifiers               | Definition                                       |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-------------------------|--------------------------------------------------|
 | `void push(const_reference value)`| inserts an element at the end          |
 | `void pop()`            | removes the first element                        |
 | `void swap(Queue& other)`  | swaps the contents                            |
@@ -227,7 +227,7 @@ This table contains the public methods for modifying a container:
 This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
 
 | Member type       | Definition                                                                |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-------------------|---------------------------------------------------------------------------|
 | `value_type`      | `T` the template parameter T                                              |
 | `reference`       | `T &` defines the type of the reference to an element                     |
 | `const_reference` | `const T &` defines the type of the constant reference                    |
@@ -238,7 +238,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 This table contains the main public methods for interacting with the class:
 
 | Functions         | Definition                                                                |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-------------------|---------------------------------------------------------------------------|
 | `Stack()`         | default constructor, creates an empty stack                               |
 | `Stack(std::initializer_list<value_type> const &items)` | initializer list constructor, creates stack initizialized using std::initializer_list<T>                                                                        |
 | `Stack(const Stack &s)` | copy constructor                                                    |
@@ -252,7 +252,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for accessing the elements of the class:
 
 | Element access           | Definition                                       |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|--------------------------|--------------------------------------------------|
 | `const_reference top()`  | accesses the top element                         |
 
 *Stack Capacity*
@@ -260,7 +260,7 @@ This table contains the public methods for accessing the elements of the class:
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity           | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|--------------------|-------------------------------------------------|
 | `bool empty()`     | checks whether the container is empty           |
 | `size_type size()` | returns the number of elements                  |
 
@@ -269,7 +269,7 @@ This table contains the public methods for accessing the container capacity info
 This table contains the public methods for modifying a container:
 
 | Modifiers                         | Definition                                       |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-----------------------------------|--------------------------------------------------|
 | `void push(const_reference value)`| inserts an element at the top                    |
 | `void pop()`                      | removes the top element                          |
 | `void swap(Stack& other)`         | swaps the contents                               |
@@ -282,7 +282,7 @@ This table contains the public methods for modifying a container:
 This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
 
 | Member type              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------  |----------------------------------------------------------------------------------------|
 | `key_type`               | `Key` the first template parameter (Key)                                               |
 | `value_type`             | `Key` value type (the value itself is a key)                                           |
 | `reference`              | `value_type &` defines the type of the reference to an element                         |
@@ -296,7 +296,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 This table contains the main public methods for interacting with the class:
 
 | Member functions      | Definition                                                                                |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-----------------------|-------------------------------------------------------------------------------------------|
 | `Set()`               | default constructor, creates an empty set                                                 |
 | `Set(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the set initizialized using std::initializer_list<T>                                                                                            |
 | `Set(const Set &s)`   | copy constructor                                                                          |
@@ -310,7 +310,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for iterating over class elements (access to iterators):
 
 | Iterators              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `iterator begin()`     | returns an iterator to the beginning                                                   |
 | `iterator end()`       | returns an iterator to the end                                                         |
 
@@ -319,7 +319,7 @@ This table contains the public methods for iterating over class elements (access
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity                     | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------------|-------------------------------------------------|
 | `bool empty()`               | checks whether the container is empty           |
 | `size_type size()`           | returns the number of elements                  |
 | `size_type max_size()`       | returns the maximum possible number of elements |
@@ -329,7 +329,7 @@ This table contains the public methods for accessing the container capacity info
 This table contains the public methods for modifying a container:
 
 | Modifiers              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`         | clears the contents                                                                    |
 | `std::pair<iterator, bool> insert(const value_type& value)` | inserts a node and returns an iterator to where the element is in the container and bool denoting whether the insertion took place                                                                    |
 | `void erase(iterator pos)` | erases an element at pos                                                           |
@@ -341,7 +341,7 @@ This table contains the public methods for modifying a container:
 This table contains the public methods for viewing the container:
 
 | Lookup                 | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `iterator find(const Key& key)`  | finds an element with a specific key                                         |
 | `bool contains(const Key& key)`  | checks if the container contains an element with a specific key              |
 
@@ -351,7 +351,7 @@ This table contains the public methods for viewing the container:
 This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
 
 | Member type              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|--------------------------|----------------------------------------------------------------------------------------|
 | `key_type`               | `Key` the first template parameter (Key)                                               |
 | `value_type`             | `Key` value type (the value itself is a key)                                           |
 | `reference`              | `value_type &` defines the type of the reference to an element                         |
@@ -365,7 +365,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 This table contains the main public methods for interacting with the class:
 
 | Member functions         | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|--------------------------|----------------------------------------------------------------------------------------|
 | `Multiset()`             | default constructor, creates an empty set                                              |
 | `Multiset(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates the set initizialized using std::initializer_list<T>                                                                                            |
 | `Multiset(const Multiset &ms)`  | copy constructor                                                                |
@@ -379,7 +379,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for iterating over class elements (access to iterators):
 
 | Iterators              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `iterator begin()`     | returns an iterator to the beginning                                                   |
 | `iterator end()`       | returns an iterator to the end                                                         |
 
@@ -388,7 +388,7 @@ This table contains the public methods for iterating over class elements (access
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity               | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|-------------------------------------------------|
 | `bool empty()`         | checks whether the container is empty           |
 | `size_type size()`     | returns the number of elements                  |
 | `size_type max_size()` | returns the maximum possible number of elements |
@@ -398,7 +398,7 @@ This table contains the public methods for accessing the container capacity info
 This table contains the public methods for modifying a container:
 
 | Modifiers              | Definition                                                                                           |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|------------------------------------------------------------------------------------------------------|
 | `void clear()`         | clears the contents                                                                                  |
 | `iterator insert(const value_type& value)` | inserts a node and returns an iterator to where the element is in the container  |
 | `void erase(iterator pos)`                 | erases an element at pos                                                         |
@@ -410,7 +410,7 @@ This table contains the public methods for modifying a container:
 This table contains the public methods for viewing the container:
 
 | Lookup                 | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `size_type count(const Key& key)` | returns the number of elements matching a specific key                      |
 | `iterator find(const Key& key)`   | finds element with a specific key                                           |
 | `bool contains(const Key& key)`   | checks if the container contains element with a specific key                |
@@ -425,7 +425,7 @@ This table contains the public methods for viewing the container:
 This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
 
 | Member type            | definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `value_type`           | `T` defines the type of the element (T is template parameter)                          |
 | `reference`            | `T &` defines the type of the reference to an element                                  |
 | `const_reference`      | `const T &` defines the type of the constant reference                                 |
@@ -438,7 +438,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 This table contains the main public methods for interacting with the class:
 
 | Functions              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `Vector()`             | default constructor, creates an empty vector                                           |
 | `Vector(size_type n)`  | parameterized constructor, creates the vector of size n                                |
 | `Vector(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates a vector initizialized using std::initializer_list<T>                                                                                          |
@@ -453,7 +453,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for accessing the elements of the class:
 
 | Element access                | Definition                                                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-------------------------------|---------------------------------------------------------------------------------|
 | `reference at(size_type pos)` | access a specified element with bounds checking                                 |
 | `reference operator[](size_type pos)` | access a specified element                                              |
 | `const_reference front()`     | access the first element                                                        |
@@ -465,7 +465,7 @@ This table contains the public methods for accessing the elements of the class:
 This table contains the public methods for iterating over class elements (access to iterators):
 
 | Iterators             | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-----------------------|-------------------------------------------------|
 | `iterator begin()`    | returns an iterator to the beginning            |
 | `iterator end()`      | returns an iterator to the end                  |
 
@@ -474,7 +474,7 @@ This table contains the public methods for iterating over class elements (access
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity               | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `bool empty()`         | checks whether the container is empty                                                  |
 | `size_type size()`     | returns the number of elements                                                         |
 | `size_type max_size()` | returns the maximum possible number of elements                                        |
@@ -488,7 +488,7 @@ This table contains the public methods for modifying a container:
 
 
 | Modifiers              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `void clear()`         | clears the contents                                                                    |
 | `iterator insert(iterator pos, const_reference value)` | inserts elements into concrete pos and returns the iterator that points to the new element                                                                                                           |
 | `void erase(iterator pos)` | erases an element at pos                                                           |
@@ -503,7 +503,7 @@ This table contains the public methods for modifying a container:
 This table contains in-class type overrides (typical for the standard STL library) that are adopted to make class code easy to understand:
 
 | Member type            | definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `value_type`           | `T` defines the type of an element (T is template parameter)                           |
 | `reference`            | `T &` defines the type of the reference to an element                                  |
 | `const_reference`      | `const T &` defines the type of the constant reference                                 |
@@ -516,7 +516,7 @@ This table contains in-class type overrides (typical for the standard STL librar
 This table contains the main public methods for interacting with the class:
 
 | Functions              | Definition                                                                             |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|------------------------|----------------------------------------------------------------------------------------|
 | `Array()`              | default constructor, creates an empty array                                            |
 | `Array(std::initializer_list<value_type> const &items)`  | initializer list constructor, creates array initizialized using std::initializer_list<T>                                                                                          |
 | `Array(const Array &a)`| copy constructor                                                                       |
@@ -529,7 +529,7 @@ This table contains the main public methods for interacting with the class:
 This table contains the public methods for accessing the elements of the class:
 
 | Element access                        | Definition                                                              |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|---------------------------------------|-------------------------------------------------------------------------|
 | `reference at(size_type pos)`         | access a specified element with bounds checking                         |
 | `reference operator[](size_type pos)` | access a specified element                                              |
 | `const_reference front()`             | access the first element                                                |
@@ -541,7 +541,7 @@ This table contains the public methods for accessing the elements of the class:
 This table contains the public methods for iterating over class elements (access to iterators):
 
 | Iterators           | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|---------------------|-------------------------------------------------|
 | `iterator begin()`  | returns an iterator to the beginning            |
 | `iterator end()`    | returns an iterator to the end                  |
 
@@ -550,7 +550,7 @@ This table contains the public methods for iterating over class elements (access
 This table contains the public methods for accessing the container capacity information:
 
 | Capacity                | Definition                                      |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|-------------------------|-------------------------------------------------|
 | `bool empty()`          | checks whether the container is empty           |
 | `size_type size()`      | returns the number of elements                  |
 | `size_type max_size()`  | returns the maximum possible number of elements |
@@ -560,6 +560,6 @@ This table contains the public methods for accessing the container capacity info
 This table contains the public methods for modifying a container:
 
 | Modifiers                            | Definition                                               |
-|------------------------|-----------------------------------------------------------------------------------------------------|
+|--------------------------------------|----------------------------------------------------------|
 | `void swap(Array& other)`            | swaps the contents                                       |
 | `void fill(const_reference value)`   | assigns the given value to all elements in the container |
